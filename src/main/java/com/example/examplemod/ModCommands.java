@@ -1,5 +1,6 @@
 package com.example.examplemod;
 
+import com.example.examplemod.bot.TrainingBot;
 import com.mojang.brigadier.CommandDispatcher;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
@@ -18,10 +19,15 @@ public class ModCommands {
         dispatcher.register(
                 Commands.literal("spawnbot")
                         .executes(context -> {
+
+                            TrainingBot bot = new TrainingBot();
+                            bot.spawn();
+
                             context.getSource().sendSuccess(
-                                    () -> Component.literal("Bot spawning..."),
+                                    () -> Component.literal("TrainingBot created!"),
                                     false
                             );
+
                             return 1;
                         })
         );

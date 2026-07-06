@@ -21,10 +21,15 @@ public class ModCommands {
                         .executes(context -> {
 
                             TrainingBot bot = new TrainingBot();
+
                             bot.spawn();
+                            bot.useMace();
+                            bot.useShield();
 
                             context.getSource().sendSuccess(
-                                    () -> Component.literal("TrainingBot created!"),
+                                    () -> Component.literal(
+                                            bot.getName() + " | HP: " + bot.getHealth()
+                                    ),
                                     false
                             );
 

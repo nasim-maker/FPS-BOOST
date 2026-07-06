@@ -3,7 +3,7 @@ package com.example.examplemod.bot;
 public class TrainingBot {
 
     private String name = "TrainingBot";
-    private int health = 100;
+    private int health = 20;
     private boolean spawned = false;
 
     public void spawn() {

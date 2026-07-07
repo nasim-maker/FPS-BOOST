@@ -13,7 +13,11 @@ import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 
 @Mod(value = ExampleMod.MODID, dist = Dist.CLIENT)
-@EventBusSubscriber(modid = ExampleMod.MODID, value = Dist.CLIENT)
+@EventBusSubscriber(
+        modid = ExampleMod.MODID,
+        bus = EventBusSubscriber.Bus.MOD,
+        value = Dist.CLIENT
+)
 public class ExampleModClient {
 
     public ExampleModClient(ModContainer container) {

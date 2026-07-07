@@ -70,6 +70,7 @@ public class ExampleMod {
     public ExampleMod(IEventBus modEventBus, ModContainer modContainer) {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
+        modEventBus.addListener(this::registerAttributes);
 
         // Register the Deferred Register to the mod event bus so blocks get registered
         BLOCKS.register(modEventBus);
@@ -110,7 +111,6 @@ public class ExampleMod {
             event.accept(EXAMPLE_BLOCK_ITEM);
         }
     }
-    @SubscribeEvent
 public void registerAttributes(EntityAttributeCreationEvent event) {
     event.put(
             ModEntities.TRAINING_BOT.get(),

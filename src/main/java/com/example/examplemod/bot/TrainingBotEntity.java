@@ -51,6 +51,18 @@ public boolean doHurtTarget(Entity target) {
     this.swing(InteractionHand.MAIN_HAND);
     return super.doHurtTarget(target);
 }
+    @Override
+public void tick() {
+    super.tick();
+
+    if (!this.level().isClientSide) {
+        if (this.horizontalCollision && this.onGround()) {
+            this.jumpFromGround();
+        }
+
+        this.setSprinting(this.getTarget() != null);
+    }
+}
     public static AttributeSupplier.Builder createAttributes() {
         return PathfinderMob.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 20.0D)

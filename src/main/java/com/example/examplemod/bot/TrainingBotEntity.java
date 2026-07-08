@@ -15,6 +15,8 @@ import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.Entity;
 
 public class TrainingBotEntity extends PathfinderMob {
 
@@ -42,8 +44,13 @@ protected void registerGoals() {
 
     this.targetSelector.addGoal(1,
             new NearestAttackableTargetGoal<>(this, Player.class, true));
-    }
+}
 
+@Override
+public boolean doHurtTarget(Entity target) {
+    this.swing(InteractionHand.MAIN_HAND);
+    return super.doHurtTarget(target);
+}
     public static AttributeSupplier.Builder createAttributes() {
         return PathfinderMob.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 20.0D)

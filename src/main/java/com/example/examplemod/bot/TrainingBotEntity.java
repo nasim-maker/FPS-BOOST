@@ -17,10 +17,12 @@ import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
+import com.example.examplemod.bot.ai.MovementAI;
 
 public class TrainingBotEntity extends PathfinderMob {
 
     private final TrainingBot bot = new TrainingBot();
+    private final MovementAI movementAI = new MovementAI();
 
     public TrainingBotEntity(EntityType<? extends PathfinderMob> entityType, Level level) {
     super(entityType, level);
@@ -55,14 +57,9 @@ public boolean doHurtTarget(Entity target) {
 public void tick() {
     super.tick();
 
-    if (!this.level().isClientSide) {
-        if (this.horizontalCollision && this.onGround()) {
-            this.jumpFromGround();
+    movementAI.tick(this);
         }
 
-        this.setSprinting(this.getTarget() != null);
-    }
-}
     public static AttributeSupplier.Builder createAttributes() {
         return PathfinderMob.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 20.0D)

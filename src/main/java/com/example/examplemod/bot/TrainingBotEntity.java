@@ -10,6 +10,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
+import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
+import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.player.Player;
 
 public class TrainingBotEntity extends PathfinderMob {
 
@@ -30,8 +35,13 @@ this.setItemSlot(EquipmentSlot.MAINHAND, mace);
     }
 
     @Override
-    protected void registerGoals() {
-        super.registerGoals();
+protected void registerGoals() {
+    this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.2D, false));
+    this.goalSelector.addGoal(2, new LookAtPlayerGoal(this, Player.class, 8.0F));
+    this.goalSelector.addGoal(3, new RandomLookAroundGoal(this));
+
+    this.targetSelector.addGoal(1,
+            new NearestAttackableTargetGoal<>(this, Player.class, true));
     }
 
     public static AttributeSupplier.Builder createAttributes() {

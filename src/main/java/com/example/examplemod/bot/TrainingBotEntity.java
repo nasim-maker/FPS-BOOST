@@ -47,7 +47,7 @@ protected void registerGoals() {
     public static AttributeSupplier.Builder createAttributes() {
         return PathfinderMob.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 20.0D)
-                .add(Attributes.MOVEMENT_SPEED, 0.10D)
+                .add(Attributes.MOVEMENT_SPEED, 0.30D)
                 .add(Attributes.ATTACK_DAMAGE, 1.0D);
     }
 

@@ -5,7 +5,9 @@ import com.example.examplemod.bot.TrainingBotEntity;
 public class MovementAI {
 
     public void tick(TrainingBotEntity bot) {
-
+        // Sprint
+        // Jump
+        // Pathfinding
+        // Strafing
     }
-
 }

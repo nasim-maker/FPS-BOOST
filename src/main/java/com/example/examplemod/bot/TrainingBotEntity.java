@@ -8,6 +8,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.world.item.enchantment.Enchantments;
 
 public class TrainingBotEntity extends PathfinderMob {
 
@@ -16,7 +18,8 @@ public class TrainingBotEntity extends PathfinderMob {
     public TrainingBotEntity(EntityType<? extends PathfinderMob> entityType, Level level) {
     super(entityType, level);
 
-    this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(Items.MACE));
+    ItemStack mace = new ItemStack(Items.MACE);
+this.setItemSlot(EquipmentSlot.MAINHAND, mace);
     this.setItemSlot(EquipmentSlot.OFFHAND, new ItemStack(Items.SHIELD));
 
     this.setItemSlot(EquipmentSlot.HEAD, new ItemStack(Items.NETHERITE_HELMET));
